@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="060c04dd-8a36-491a-be32-d318aceefa26" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2s25csjPii2zTyHtRybC8Cxcpbi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.IdentityServiceApplication.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.executor": "Run",
+    "JUnit.UserControllerIntegrationTest.createUser_validRequest_success.executor": "Run",
+    "JUnit.UserControllerIntegrationTest.executor": "Run",
+    "JUnit.UserControllerTest.createUser.executor": "Run",
+    "JUnit.UserControllerTest.createUser_usernameInvalid_fail.executor": "Run",
+    "JUnit.UserControllerTest.createUser_validRequest_success.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "JUnit.UserServiceTest.createUser_userExisted_fail.executor": "Run",
+    "JUnit.UserServiceTest.createUser_validRequest_success.executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
+    "JUnit.UserServiceTest.getMyInfo_valid_success.executor": "Run",
+    "Maven.identity-service [clean].executor": "Run",
+    "Maven.identity-service [com.diffplug.spotless:spotless-maven-plugin:2.43.0:check].executor": "Run",
+    "Maven.identity-service.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Documents/1. DACN/bookteria",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\1. DACN\identity-service\identity-service\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sprigan.identity_service.controller" />
+      <recent name="com.sprigan.identity_service.dto.request" />
+      <recent name="com.sprigan.identity_service.entity" />
+      <recent name="com.sprigan.identity_service.mapper" />
+      <recent name="com.sprigan.identity_service.dto.response" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MavenRunConfiguration" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.UserControllerIntegrationTest">
+    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SIGNERKEY" value="D/EFj44tW9P9sM8rhe7gcjvkl+VMY3Nkdnqejssg2SczcHkHesvrUGEHPNJOoTy7" />
+        <env name="DBMS_CONNECTION" value="jdbc:mysql://localhost:3306/identity_service" />
+        <env name="DBMS_ USERNAME" value="root" />
+        <env name="DBMS_PASSWORD" value="root" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.sprigan.identity_service.IdentityServiceApplication" />
+      <module name="identity-service" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=prod" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sprigan.identity_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityServiceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sprigan.identity_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sprigan.identity_service" />
+      <option name="MAIN_CLASS_NAME" value="com.sprigan.identity_service.IdentityServiceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sprigan.identity_service.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sprigan.identity_service.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.sprigan.identity_service.controller.UserControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerIntegrationTest.createUser_validRequest_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sprigan.identity_service.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sprigan.identity_service.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.sprigan.identity_service.controller.UserControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="createUser_validRequest_success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.getMyInfo_valid_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sprigan.identity_service.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sprigan.identity_service.service" />
+      <option name="MAIN_CLASS_NAME" value="com.sprigan.identity_service.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="getMyInfo_valid_success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="identity-service" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/identity-service" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.IdentityServiceApplication" />
+      <item itemvalue="JUnit.IdentityServiceApplicationTests" />
+      <item itemvalue="JUnit.UserControllerIntegrationTest" />
+      <item itemvalue="JUnit.UserControllerIntegrationTest.createUser_validRequest_success" />
+      <item itemvalue="JUnit.UserServiceTest.getMyInfo_valid_success" />
+      <item itemvalue="Maven.identity-service" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserControllerIntegrationTest" />
+        <item itemvalue="Application.IdentityServiceApplication" />
+        <item itemvalue="JUnit.UserControllerIntegrationTest.createUser_validRequest_success" />
+        <item itemvalue="JUnit.UserServiceTest.getMyInfo_valid_success" />
+        <item itemvalue="JUnit.IdentityServiceApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="060c04dd-8a36-491a-be32-d318aceefa26" name="Changes" comment="" />
+      <created>1737640912201</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737640912201</updated>
+    </task>
+    <servers />
+  </component>
+</project>
