@@ -3,7 +3,10 @@ package com.sprigan.identity_service.service;
 import java.util.HashSet;
 import java.util.List;
 
+import com.sprigan.identity_service.mapper.ProfileMapper;
+import com.sprigan.identity_service.repository.httpclient.ProfileClient;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,7 +38,10 @@ public class UserService {
     UserRepository userRepository;
     RoleRepository roleRepository;
     UserMapper userMapper;
+    ProfileMapper profileMapper;
     PasswordEncoder passwordEncoder;
+    ProfileClient profileClient;
+    KafkaTemplate<String, Object> kafkaTemplate;
 
     public UserResponse createUser(UserCreationRequest request) {
         User user = userMapper.toUser(request);
@@ -45,6 +51,7 @@ public class UserService {
         roleRepository.findById(PredefinedRole.USER_ROLE).ifPresent(roles::add);
 
         user.setRoles(roles);
+        user.setEmailVerified(false);
 
         try {
             user = userRepository.save(user);
@@ -52,7 +59,16 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
-        return userMapper.toUserResponse(user);
+        var profileRequest = profileMapper.toProfileCreationRequest(request);
+        profileRequest.setUserId(user.getId());
+
+        var profile = profileClient.createProfile(profileRequest);
+
+
+        var userCreationResponse = userMapper.toUserResponse(user);
+        userCreationResponse.setId(profile.getResult().getId());
+
+        return userCreationResponse;
     }
 
     public UserResponse getMyInfo() {
