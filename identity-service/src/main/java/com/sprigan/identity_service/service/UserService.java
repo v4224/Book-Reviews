@@ -3,6 +3,7 @@ package com.sprigan.identity_service.service;
 import java.util.HashSet;
 import java.util.List;
 
+import com.sprigan.event.dto.NotificationEvent;
 import com.sprigan.identity_service.mapper.ProfileMapper;
 import com.sprigan.identity_service.repository.httpclient.ProfileClient;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -46,8 +47,8 @@ public class UserService {
     public UserResponse createUser(UserCreationRequest request) {
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-
         HashSet<Role> roles = new HashSet<>();
+
         roleRepository.findById(PredefinedRole.USER_ROLE).ifPresent(roles::add);
 
         user.setRoles(roles);
@@ -55,7 +56,7 @@ public class UserService {
 
         try {
             user = userRepository.save(user);
-        } catch (DataIntegrityViolationException exception) {
+        } catch (DataIntegrityViolationException exception){
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
@@ -64,11 +65,20 @@ public class UserService {
 
         var profile = profileClient.createProfile(profileRequest);
 
+        NotificationEvent notificationEvent = NotificationEvent.builder()
+                .channel("EMAIL")
+                .recipient(request.getEmail())
+                .subject("Welcome to Book Reviews")
+                .body("Hello, " + request.getUsername())
+                .build();
 
-        var userCreationResponse = userMapper.toUserResponse(user);
-        userCreationResponse.setId(profile.getResult().getId());
+        // Publish message to kafka
+        kafkaTemplate.send("notification-delivery", notificationEvent);
 
-        return userCreationResponse;
+        var userCreationReponse = userMapper.toUserResponse(user);
+        userCreationReponse.setId(profile.getResult().getId());
+
+        return userCreationReponse;
     }
 
     public UserResponse getMyInfo() {
@@ -80,7 +90,7 @@ public class UserService {
         return userMapper.toUserResponse(user);
     }
 
-    @PostAuthorize("returnObject.username == authentication.name")
+    @PreAuthorize("hasRole('ADMIN')")
     public UserResponse updateUser(String userId, UserUpdateRequest request) {
         User user = userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
