@@ -3,17 +3,14 @@ package com.sprigan.identity_service.service;
 import java.util.HashSet;
 import java.util.List;
 
-import com.sprigan.event.dto.NotificationEvent;
-import com.sprigan.identity_service.mapper.ProfileMapper;
-import com.sprigan.identity_service.repository.httpclient.ProfileClient;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.sprigan.event.dto.NotificationEvent;
 import com.sprigan.identity_service.constant.PredefinedRole;
 import com.sprigan.identity_service.dto.request.UserCreationRequest;
 import com.sprigan.identity_service.dto.request.UserUpdateRequest;
@@ -22,9 +19,11 @@ import com.sprigan.identity_service.entity.Role;
 import com.sprigan.identity_service.entity.User;
 import com.sprigan.identity_service.exception.AppException;
 import com.sprigan.identity_service.exception.ErrorCode;
+import com.sprigan.identity_service.mapper.ProfileMapper;
 import com.sprigan.identity_service.mapper.UserMapper;
 import com.sprigan.identity_service.repository.RoleRepository;
 import com.sprigan.identity_service.repository.UserRepository;
+import com.sprigan.identity_service.repository.httpclient.ProfileClient;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +55,7 @@ public class UserService {
 
         try {
             user = userRepository.save(user);
-        } catch (DataIntegrityViolationException exception){
+        } catch (DataIntegrityViolationException exception) {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 

@@ -203,6 +203,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>identity-service</finalName>
 	</build>
 
 </project>
