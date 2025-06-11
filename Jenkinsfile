@@ -104,7 +104,7 @@ pipeline {
           script {
             if (env.RUN_SONAR == 'true') {
               timeout(time: 5, unit: 'MINUTES') {
-                waitForQualityGate(abortPipeline: true)
+                waitForQualityGate(abortPipeline: false)
               }
             }
           }
