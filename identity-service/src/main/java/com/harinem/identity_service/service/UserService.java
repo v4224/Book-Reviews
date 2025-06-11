@@ -64,7 +64,7 @@ public class UserService {
 
 
         var profileResponse=profileClient.createProfile(profileRequest);
-        log.info(String.valueOf(profileResponse));
+        //log.info(String.valueOf(profileResponse));
 
         //Build notification events
         NotificationEvent notificationEvent= NotificationEvent.builder()
@@ -109,7 +109,7 @@ public class UserService {
 
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserResponse> getUsers() {
-        log.info("In method get Users");
+        //log.info("In method get Users");
         return userRepository.findAll().stream().map(userMapper::toUserResponse).toList();
     }
     @PreAuthorize("hasRole('ADMIN') or @userService.isSelf(#userId, authentication.name)")
