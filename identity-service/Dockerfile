@@ -1,15 +1,9 @@
-FROM jelastic/maven:3.9.5-openjdk-21 AS build
-
+FROM maven:3.9.9-eclipse-temurin-21 AS buidler
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-
-RUN mvn package -DskipTests
+COPY . /app
+RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jdk-alpine
-
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "identity-service.jar"]
+COPY --from=buidler /app/target/identity-service.jar /app/identity-service.jar
+CMD ["java", "-jar", "/app/identity-service.jar"]

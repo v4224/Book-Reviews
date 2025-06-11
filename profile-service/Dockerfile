@@ -1,15 +1,9 @@
-FROM jelastic/maven:3.9.5-openjdk-21 AS build
-
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-
-RUN mvn package -DskipTests
+COPY . /app
+RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jdk-alpine
-
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=builder /app/target/profile-service.jar /app/profile-service.jar
+CMD ["java", "-jar", "/app/profile-service.jar"]

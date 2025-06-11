@@ -7,9 +7,12 @@ spring:
     name: post-service
   data:
     mongodb:
-      uri: mongodb://root:root@localhost:27017/post-service?authSource=admin
+      #uri: mongodb://root:root@localhost:27017/post-service?authSource=admin
+      #uri: mongodb://${MONGO_USER:root}:${MONGO_PASS:root}@${MONGO_HOST:mongodb-container}:${MONGO_PORT:27017}/post-service?authSource=admin
+    uri: mongodb://${MONGO_USER:root}:${MONGO_PASS:root}@${MONGO_HOST:localhost}:${MONGO_PORT:27017}/post-service?authSource=admin
 
 app:
   services:
     profile:
-      url: http://localhost:8081/profile
+      #url: http://localhost:8081/profile
+      url: http://${PROFILE_SERVICE_HOST:localhost}:${PROFILE_SERVICE_PORT:8081}/profile
