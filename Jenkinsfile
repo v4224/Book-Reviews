@@ -3,6 +3,7 @@ pipeline {
 
   environment {
     IMAGE_REGISTRY   = "harbor.harinemdevops.online"
+    APP_NAME         = "book-reviews"
     SONARQUBE_ENV    = "sonarqube-server"
     GITOPS_REPO_URL  = "https://github.com/v4224/Book-Reviews-gitops.git"
     ALL_SERVICES     = "api-gateway,identity-service,profile-service,notification-service,post-service,file-service"
@@ -138,7 +139,7 @@ pipeline {
             services.each { svc ->
               buildTasks[svc] = {
                 dir(svc) {
-                  sh "docker build -t ${IMAGE_REGISTRY}/${svc}:${env.IMAGE_TAG} ."
+                  sh "docker build -t ${IMAGE_REGISTRY}/${APP_NAME}/${svc}:${env.IMAGE_TAG} ."
 
                   sh """
                     docker run --rm \
@@ -152,7 +153,7 @@ pipeline {
                       --format template \
                       --template @contrib/html.tpl \
                       --output /reports/${svc}-trivy-scan-report.html \
-                      ${IMAGE_REGISTRY}/${svc}:${env.IMAGE_TAG} || true
+                      ${IMAGE_REGISTRY}/${APP_NAME}/${svc}:${env.IMAGE_TAG} || true
                   """
                   echo "→ Trivy scan for ${svc} completed (report: trivy-reports/${svc}-trivy-scan-report.html)"
                 }
@@ -172,7 +173,7 @@ pipeline {
 
           services.each { svc ->
             pushTasks[svc] = {
-              sh "docker push ${IMAGE_REGISTRY}/${svc}:${env.IMAGE_TAG}"
+              sh "docker push ${IMAGE_REGISTRY}/${APP_NAME}/${svc}:${env.IMAGE_TAG}"
             }
           }
           parallel pushTasks
@@ -208,7 +209,7 @@ pipeline {
               services.each { svc ->
                 def file = "app/${svc}/${svc}-deployment.yaml"
                 sh """
-                  sed -i 's#image: .*/${svc}:.*#image: ${IMAGE_REGISTRY}/${svc}:${env.IMAGE_TAG}#' ${file}
+                  sed -i 's#image: .*/${svc}:.*#image: ${IMAGE_REGISTRY}/${APP_NAME}/${svc}:${env.IMAGE_TAG}#' ${file}
                 """
               }
 
