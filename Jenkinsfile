@@ -2,7 +2,7 @@ pipeline {
   agent { label 'jenkins' }
 
   environment {
-    IMAGE_REGISTRY   = "harbor.harinemdevops.online"
+    IMAGE_REGISTRY   = "registry.harinemdevops.online"
     APP_NAME         = "book-reviews"
     SONARQUBE_ENV    = "sonarqube-server"
     GITOPS_REPO_URL  = "https://github.com/v4224/Book-Reviews-gitops.git"
