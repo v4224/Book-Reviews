@@ -2,7 +2,7 @@ pipeline {
   agent { label 'jenkins' }
 
   environment {
-    IMAGE_REGISTRY   = "hoangvu42"
+    IMAGE_REGISTRY   = "harbor.harinemdevops.online"
     SONARQUBE_ENV    = "sonarqube-server"
     GITOPS_REPO_URL  = "https://github.com/v4224/Book-Reviews-gitops.git"
     ALL_SERVICES     = "api-gateway,identity-service,profile-service,notification-service,post-service,file-service"
@@ -118,13 +118,13 @@ pipeline {
     stage('Build & Scan Docker Images') {
       steps {
         withCredentials([usernamePassword(
-          credentialsId: 'dockerhub-token',
+          credentialsId: 'harbor-token',
           usernameVariable: 'DOCKER_USER',
           passwordVariable: 'DOCKER_PASS'
         )]) {
           script {
             sh '''
-              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+              echo $DOCKER_PASS | docker login ${IMAGE_REGISTRY} -u $DOCKER_USER --password-stdin
             '''
 
             sh """
