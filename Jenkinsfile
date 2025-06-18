@@ -100,20 +100,6 @@ pipeline {
           parallel sonarTasks
         }
       }
-      post {
-        success {
-          script {
-            if (env.RUN_SONAR == 'true') {
-              timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate(abortPipeline: false)
-              }
-            }
-          }
-        }
-        failure {
-          echo "An error has occurred during the SonarQube analysis process."
-        }
-      }
     }
 
     stage('Build & Scan Docker Images') {
